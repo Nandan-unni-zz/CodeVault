@@ -40,6 +40,10 @@ int main()
 	case '%':
 		c = fmod(a, b);
         	break;
+	case '√ ':
+		   c=a*(sqrt(b)) ;
+		    break;
+		    
 	default:
 		cout << "\nInvalid Operator ! Try Again!\n";
 		goto label;

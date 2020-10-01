@@ -5,8 +5,9 @@ using namespace std;
 int main()
 {
     float a, b, c;
-    char op;
+    char op, ch;
     bool isValid = true;
+    label:
     cout << "Enter the first number : ";
     cin >> a;
     cout << "Enter the operator : ";
@@ -17,34 +18,39 @@ int main()
     {
 	case '+':
 		c = a + b;
-        break;
+        	break;
 	case '-':
 		c = a - b;
-        break;
+        	break;
 	case '*':
 		c = a * b;
-        break;
+        	break;
 	case '/':
 		if (b != 0)
 			c = a / b;
-        else 
-        {
+        	else 
+        	{
 			cout << "\nDivision by 0 not possible !\n";
 			isValid = false;
 		}
-        break;
+        	break;
 	case '^':
 		c = pow(a, b);
-        break;
+        	break;
 	case '%':
 		c = fmod(a, b);
-        break;
+        	break;
 	default:
-		cout << "\nInvalid Operator !\n";
-		isValid = false;
-        break;
+		cout << "\nInvalid Operator ! Try Again!\n";
+		goto label;
 	}
 	if (isValid)
-        cout << "\n" << a << " " << op << " " << b << " = " << c << "\n";
+        	cout << "\n" << a << " " << op << " " << b << " = " << c << "\n";
+	cout<<"\n Do you want to Continue? (y/n)";
+	cin>>ch;
+	if(ch == 'y') {
+		isValid = true;
+		goto label;
+	}
     return 0;
 }

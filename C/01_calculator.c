@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <math.h>
-
+float permutation(int a, int b);
+float combination(int a, int b);
 int main()
 {
-    float a, b, c;
+    float a, b;
+    long int c;
     char op;
     int isValid = 1;
     printf("Enter the first number : ");
@@ -38,13 +40,49 @@ int main()
 	case '%':
 		c = fmod(a, b);
         break;
+		case 'P':
+			if(b>a)
+			{
+				printf("\nPermutation not possible !\n");
+			isValid=0;
+			}
+			c=permutation(a,b);
+			break;
+		case 'C': if(b>a)
+		           {
+		            printf("\nCombination not possible ! \n");
+			    isValid=0;
+		           }
+			c=combination(a,b);
 	default:
 		printf("\nInvalid Operator !\n");
 		isValid = 0;
         break;
 	}
 	if (isValid) {
-		printf("\n%f %c %f = %f\n", a, op, b, c);
+		printf("\n%f %c %f = %ld\n", a, op, b, c);
 	}
     return 0;
+}
+long permutation(int a, int b)
+{
+    return factorial(a) / factorial(a-b);
+}
+
+long combination(int a, int b)
+{
+    return permutation(a,b) / factorial(b);
+}
+
+long factorial(int num)
+{
+    long  fact = 1;
+
+    while(num > 0)
+    {
+        fact *= num;
+        num--;
+    }
+
+    return fact;
 }

@@ -6,7 +6,7 @@ int main()
 {
     float a, b, c;
     char op, ch;
-    bool isValid = true;
+    bool isValid = true; //test
     label:
     cout << "Enter the first number : ";
     cin >> a;
